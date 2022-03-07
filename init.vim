@@ -1,16 +1,26 @@
 "CONFIG
+"python
+syntax on
+filetype indent plugin on
+set number
+set tabstop=8
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set showmatch
+let python_highlight_all = 1
+
+"
 :set formatoptions=l
 :set lbr
 set number
 set mouse=a
 set numberwidth=1
 set clipboard=unnamed
-syntax on
 set showcmd
 set ruler
 set cursorline
 set encoding=utf-8
-set showmatch
 set sw=2
 set relativenumber
 
@@ -27,7 +37,9 @@ call plug#begin('~/.vim/plugged')
 
 "themes
 Plug 'arcticicestudio/nord-vim'
-
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'fatih/molokai'
+Plug 'morhetz/gruvbox'
 "visual
 Plug 'yggdroot/indentline'
 Plug 'itchyny/lightline.vim'
@@ -107,11 +119,17 @@ autocmd BufWrite *.js :CocCommand prettier.formatFile
 autocmd BufWrite *c :CocCommand prettier.formatFile
 
 " C/C++ tools
-map <C-c> : !gcc % && ./a.out <CR>
+map <C-c> : !g++ % && ./a.out <CR>
 
 "theme config
-colorscheme nord
-let g:lightline = {
-      \ 'colorscheme': 'nord',
-      \ }
-
+"colorscheme nod
+"let g:lightline = {
+"      \ 'colorscheme': 'nord',
+"      \ }
+"colorscheme material
+"if (has('termguicolors'))
+"set termguicolors
+"endif
+"
+let g:gruvbox_italic=1
+colorscheme gruvbox
