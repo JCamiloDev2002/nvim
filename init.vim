@@ -1,5 +1,4 @@
 "CONFIG
-"python
 syntax on
 filetype indent plugin on
 set number
@@ -33,13 +32,13 @@ set ignorecase
 set smartcase
 ""PLUGINS
 
+source $HOME/.config/nvim/themes/molokai.vim
 call plug#begin('~/.vim/plugged')
 
 "themes
 Plug 'arcticicestudio/nord-vim'
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'fatih/molokai'
-Plug 'morhetz/gruvbox'
+"Plug "tomasr/molokai"
+
 "visual
 Plug 'yggdroot/indentline'
 Plug 'itchyny/lightline.vim'
@@ -87,6 +86,7 @@ Plug 'janko-m/vim-test'
 "IDE
 Plug 'editorconfig/editorconfig-vim'
 
+
 call plug#end()
 
 
@@ -119,17 +119,12 @@ autocmd BufWrite *.js :CocCommand prettier.formatFile
 autocmd BufWrite *c :CocCommand prettier.formatFile
 
 " C/C++ tools
-map <C-c> : !g++ % && ./a.out <CR>
+map <C-p> : !g++ % && ./a.out <CR>
+map <C-c> : !gcc % && ./a.out <CR>
 
-"theme config
-"colorscheme nod
-"let g:lightline = {
-"      \ 'colorscheme': 'nord',
-"      \ }
-"colorscheme material
-"if (has('termguicolors'))
-"set termguicolors
-"endif
-"
-let g:gruvbox_italic=1
-colorscheme gruvbox
+set background=dark
+if !has("gui_running")
+  let g:rehash256 = 1
+endif
+
+colorscheme nord
